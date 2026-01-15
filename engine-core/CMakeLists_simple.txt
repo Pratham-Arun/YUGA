@@ -1,0 +1,54 @@
+cmake_minimum_required(VERSION 3.20)
+project(YUGAAssetTest VERSION 1.0.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Find packages
+find_package(glfw3 CONFIG REQUIRED)
+find_package(glad CONFIG REQUIRED)
+find_package(glm CONFIG REQUIRED)
+find_package(assimp CONFIG REQUIRED)
+find_package(Stb REQUIRED)
+
+# Source files - only asset pipeline
+set(SOURCES
+    # Assets
+    src/Assets/Mesh.cpp
+    src/Assets/Texture.cpp
+    src/Assets/Material.cpp
+    src/Assets/Model.cpp
+    src/Assets/AssetManager.cpp
+    
+    # Rendering (needed by assets)
+    src/Rendering/Shader.cpp
+    
+    # Main
+    src/main_simple.cpp
+)
+
+# Create executable
+add_executable(YUGAAssetTest ${SOURCES})
+
+# Include directories
+target_include_directories(YUGAAssetTest PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+# Link libraries
+target_link_libraries(YUGAAssetTest PRIVATE
+    glfw
+    glad::glad
+    glm::glm
+    assimp::assimp
+)
+
+# Set output directory
+set_target_properties(YUGAAssetTest PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+)
+
+# Install
+install(TARGETS YUGAAssetTest
+    RUNTIME DESTINATION bin
+)

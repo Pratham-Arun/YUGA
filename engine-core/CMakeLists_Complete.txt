@@ -1,0 +1,45 @@
+cmake_minimum_required(VERSION 3.20)
+project(YUGAEngine VERSION 1.0.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Complete Engine with Workflow System
+set(SOURCES
+    # Math
+    src/Math/Vector2.cpp
+    src/Math/Vector4.cpp
+    src/Math/Matrix4.cpp
+    src/Math/Quaternion.cpp
+    src/Math/Transform.cpp
+    
+    # Workflow (NEW!)
+    src/Workflow/WorkflowManager.cpp
+    
+    # Scene
+    src/Scene/SceneManager.cpp
+    
+    # Input
+    src/Input/InputManager.cpp
+    
+    # Main - Workflow Demo
+    examples/WorkflowDemo.cpp
+)
+
+# Create executable
+add_executable(YUGAEngineWorkflow ${SOURCES})
+
+# Include directories
+target_include_directories(YUGAEngineWorkflow PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+# Set output directory
+set_target_properties(YUGAEngineWorkflow PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+)
+
+# Install
+install(TARGETS YUGAEngineWorkflow
+    RUNTIME DESTINATION bin
+)

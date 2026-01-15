@@ -1,0 +1,3 @@
+C:/Users/Pratham arun/source/repos/YUGA/engine-core/build_minimal/CMakeFiles/YUGAEngineMinimal.dir
+C:/Users/Pratham arun/source/repos/YUGA/engine-core/build_minimal/CMakeFiles/ALL_BUILD.dir
+C:/Users/Pratham arun/source/repos/YUGA/engine-core/build_minimal/CMakeFiles/ZERO_CHECK.dir
